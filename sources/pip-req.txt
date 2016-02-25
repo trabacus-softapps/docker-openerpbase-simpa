@@ -1,6 +1,3 @@
-# system
-pip
-wheel
 # xcg addons
 genshi
 graphviz
@@ -59,4 +56,4 @@ wsgiref
 xlwt
 dnspython
 numpy
-pycurl
+PycURL
