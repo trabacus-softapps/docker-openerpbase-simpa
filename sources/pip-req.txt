@@ -56,4 +56,3 @@ wsgiref
 xlwt
 dnspython
 numpy
-PycURL
