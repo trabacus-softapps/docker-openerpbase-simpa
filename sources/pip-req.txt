@@ -59,3 +59,4 @@ wsgiref
 xlwt
 dnspython
 numpy
+pycurl
