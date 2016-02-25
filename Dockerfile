@@ -35,7 +35,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
 		python-support \
                 python-imaging \
                 python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
-                libxrender1 libxext6 fontconfig \
+                libxrender1 libxext6 fontconfig python-pycurl \
                 python-zsi \
                 python-lasso \
 		rlwrap \
