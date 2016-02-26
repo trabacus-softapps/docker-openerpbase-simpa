@@ -38,7 +38,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
                 libxrender1 libxext6 fontconfig \
                 python-zsi \
                 python-lasso \
-		rlwrap \
+		rlwrap libcurl4-openssl-dev \
 		libfreetype6 libexpat1-dev libfontconfig1 libjpeg8-dev \
 		zlib1g-dev zlib1g-dev libsqlite3-dev libfontconfig1-dev \
 		libicu-dev libssl-dev libjpeg-dev libx11-dev libxext-dev \
@@ -57,6 +57,8 @@ RUN pip install --upgrade --use-wheel --no-index --pre \
 RUN pip install --upgrade --use-wheel --no-index --pre \
         --find-links=https://googledrive.com/host/0Bz-lYS0FYZbIfklDSm90US16S0VjWmpDQUhVOW1GZlVOMUdXb1hENFFBc01BTGpNVE1vZGM \
         --requirement=/opt/sources/pip-req.txt
+
+RUN pip install pycurl
 
 # Include PhantomJS (www.phantomjs.org) is a headless WebKit scriptable with JavaScript.
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe multiverse" > /etc/apt/sources.list
@@ -83,7 +85,7 @@ RUN chown odoo:odoo /opt/odoo/odoo.tar.gz
 # makes the container more unlikely to be unwillingly changed in interactive mode
 USER odoo
 
-RUN /bin/bash -c "mkdir -p /opt/odoo/{bin,etc,sources/odoo/addons,additional_addons,data}" && \
+RUN /bin/bash -c "mkdir -p /opt/odoo/{bin,etc,sources/odoo/openerp/addons,additional_addons,data}" && \
     cd /opt/odoo/sources/odoo && \
         tar -xvf /opt/odoo/odoo.tar.gz --strip 1 && \
         rm /opt/odoo/odoo.tar.gz
