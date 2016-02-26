@@ -50,9 +50,6 @@ ADD sources/pip-req.txt /opt/sources/pip-req.txt
 RUN pip install --upgrade --use-wheel --no-index --pre \
         --find-links=https://googledrive.com/host/0Bz-lYS0FYZbIfklDSm90US16S0VjWmpDQUhVOW1GZlVOMUdXb1hENFFBc01BTGpNVE1vZGM pip wheel
 
-# must unzip this package to make it visible as an odoo external dependency
-RUN easy_install -UZ py3o.template==0.9.8 pycurl soappy
-
 # use wheels from our public wheelhouse for proper versions of listed packages
 # as described in sourced pip-req.txt
 # these are python dependencies for odoo and "apps" as precompiled wheel packages
@@ -60,6 +57,9 @@ RUN easy_install -UZ py3o.template==0.9.8 pycurl soappy
 RUN pip install --upgrade --use-wheel --no-index --pre \
         --find-links=https://googledrive.com/host/0Bz-lYS0FYZbIfklDSm90US16S0VjWmpDQUhVOW1GZlVOMUdXb1hENFFBc01BTGpNVE1vZGM \
         --requirement=/opt/sources/pip-req.txt
+
+# must unzip this package to make it visible as an odoo external dependency
+RUN easy_install -UZ py3o.template==0.9.8 pycurl soappy
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe multiverse" > /etc/apt/sources.list
 RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections # Accept EULA for MS fonts
