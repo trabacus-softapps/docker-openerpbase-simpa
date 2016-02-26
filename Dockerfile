@@ -37,12 +37,12 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
                 python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
                 libxrender1 libxext6 fontconfig \
                 python-zsi \
-                python-lasso \
+                python-lasso libzmq3 gdebi \
 		rlwrap libcurl4-openssl-dev \
 		libfreetype6 libexpat1-dev libfontconfig1 libjpeg8-dev \
 		zlib1g-dev zlib1g-dev libsqlite3-dev libfontconfig1-dev \
 		libicu-dev libssl-dev libjpeg-dev libx11-dev libxext-dev \
-		flex bison gperf ruby libpng12-dev libfreetype6 libcurl3 \ 
+		flex bison gperf libpng12-dev libfreetype6 libcurl3 \ 
 		&& rm -rf /var/lib/apt/lists/*
 ADD sources/pip-req.txt /opt/sources/pip-req.txt
 
@@ -50,9 +50,8 @@ ADD sources/pip-req.txt /opt/sources/pip-req.txt
 RUN pip install --upgrade --use-wheel --no-index --pre \
         --find-links=https://googledrive.com/host/0Bz-lYS0FYZbIfklDSm90US16S0VjWmpDQUhVOW1GZlVOMUdXb1hENFFBc01BTGpNVE1vZGM pip wheel
 
-RUN pip install --upgrade --use-wheel --no-index --pre \
-        --find-links=https://googledrive.com/host/0Bz-lYS0FYZbIfklDSm90US16S0VjWmpDQUhVOW1GZlVOMUdXb1hENFFBc01BTGpNVE1vZGM pycurl soappy
-
+# must unzip this package to make it visible as an odoo external dependency
+RUN easy_install -UZ py3o.template==0.9.8 pycurl soappy
 
 # use wheels from our public wheelhouse for proper versions of listed packages
 # as described in sourced pip-req.txt
