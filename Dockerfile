@@ -31,7 +31,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
             ghostscript \
             postgresql-client-9.4 \
             python \
-                python-pip \ 
+                python-pip python-pycurl \ 
 		python-support \
                 python-imaging python-pycurl \
                 python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
@@ -58,7 +58,8 @@ RUN pip install --upgrade --use-wheel --no-index --pre \
         --find-links=https://googledrive.com/host/0Bz-lYS0FYZbIfklDSm90US16S0VjWmpDQUhVOW1GZlVOMUdXb1hENFFBc01BTGpNVE1vZGM \
         --requirement=/opt/sources/pip-req.txt
 
-# Include PhantomJS (www.phantomjs.org) is a headless WebKit scriptable with JavaScript.
+RUN pip install pycurl
+
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe multiverse" > /etc/apt/sources.list
 RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections # Accept EULA for MS fonts
 RUN TERM=linux apt-get update -qq && TERM=linux apt-get upgrade -y && \
