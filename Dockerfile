@@ -36,7 +36,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
                 python-imaging python-pycurl \
                 python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
                 libxrender1 libxext6 fontconfig \
-                python-zsi python-soappy \
+                python-zsi \
                 python-lasso \
 		rlwrap libcurl4-openssl-dev \
 		libfreetype6 libexpat1-dev libfontconfig1 libjpeg8-dev \
@@ -57,8 +57,6 @@ RUN pip install --upgrade --use-wheel --no-index --pre \
 RUN pip install --upgrade --use-wheel --no-index --pre \
         --find-links=https://googledrive.com/host/0Bz-lYS0FYZbIfklDSm90US16S0VjWmpDQUhVOW1GZlVOMUdXb1hENFFBc01BTGpNVE1vZGM \
         --requirement=/opt/sources/pip-req.txt
-
-RUN pip install pycurl
 
 # Include PhantomJS (www.phantomjs.org) is a headless WebKit scriptable with JavaScript.
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe multiverse" > /etc/apt/sources.list
