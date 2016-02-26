@@ -36,7 +36,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
                 python-imaging python-pycurl \
                 python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
                 libxrender1 libxext6 fontconfig \
-                python-zsi \
+                python-zsi python-soappy \
                 python-lasso \
 		rlwrap libcurl4-openssl-dev \
 		libfreetype6 libexpat1-dev libfontconfig1 libjpeg8-dev \
