@@ -12,7 +12,7 @@ RUN echo 'LANG="en_US.UTF-8"' > /etc/default/locale
 # add some system packages
 RUN  TERM=linux apt-get update &&  TERM=linux apt-get -y -q install \
         libterm-readline-perl-perl \
-        dialog sudo curl \
+        dialog sudo curl build-essential \
         && rm -rf /var/lib/apt/lists/*
 
 # Add the PostgreSQL PGP key to verify their Debian packages.
