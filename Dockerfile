@@ -36,7 +36,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
                 python-imaging \
                 python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
                 libxrender1 libxext6 fontconfig \
-                python-zsi \
+                python-zsi python-soappy python-pycurl \
                 python-lasso libzmq3 gdebi \
 		rlwrap libcurl4-openssl-dev \
 		libfreetype6 libexpat1-dev libfontconfig1 libjpeg8-dev \
@@ -59,7 +59,7 @@ RUN pip install --upgrade --use-wheel --no-index --pre \
         --requirement=/opt/sources/pip-req.txt
 
 # must unzip this package to make it visible as an odoo external dependency
-RUN easy_install -UZ py3o.template==0.9.8 pycurl soappy
+RUN easy_install -UZ py3o.template==0.9.8
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe multiverse" > /etc/apt/sources.list
 RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections # Accept EULA for MS fonts
