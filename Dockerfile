@@ -61,6 +61,10 @@ RUN pip install --upgrade --use-wheel --no-index --pre \
 # must unzip this package to make it visible as an odoo external dependency
 RUN easy_install -UZ py3o.template==0.9.8
 
+# Install SOAPpy & PycURL
+RUN pip install --upgrade --use-wheel --no-index --pre \
+        --find-links=https://googledrive.com/host/0Bz-lYS0FYZbIfklDSm90US16S0VjWmpDQUhVOW1GZlVOMUdXb1hENFFBc01BTGpNVE1vZGM pycurl soappy
+
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe multiverse" > /etc/apt/sources.list
 RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections # Accept EULA for MS fonts
 RUN TERM=linux apt-get update -qq && TERM=linux apt-get upgrade -y && \
