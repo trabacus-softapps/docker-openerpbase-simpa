@@ -13,6 +13,8 @@ xlrd
 authy
 xlsxwriter
 xmltodict
+pycurl
+soappy
 # odoo official
 Babel
 Jinja2
