@@ -78,7 +78,7 @@ RUN adduser --home=/opt/odoo --disabled-password --gecos "" --shell=/bin/bash od
 # ADD sources for the oe components
 # ADD an URI always gives 600 permission with UID:GID 0 => need to chmod accordingly
 # /!\ carefully select the source archive depending on the version
-ADD https://googledrive.com/host/0Bz-lYS0FYZbIfklDSm90US16S0VjWmpDQUhVOW1GZlVOMUdXb1hENFFBc01BTGpNVE1vZGM/openerp-7.0-20140328-001256.tar.gz /opt/odoo/odoo.tar.gz
+ADD https://googledrive.com/host/0Bz-lYS0FYZbIMXFWazlnRFpqbFE/openerp-7.0-20140328-001256.tar.gz /opt/odoo/odoo.tar.gz
 RUN chown odoo:odoo /opt/odoo/odoo.tar.gz
 
 # changing user is required by openerp which won't start with root
@@ -101,5 +101,5 @@ VOLUME ["/opt/odoo/var", "/opt/odoo/etc", "/opt/odoo/additional_addons", "/opt/o
 ENTRYPOINT ["/app/bin/boot"]
 CMD ["help"]
 # Expose the odoo ports (for linked containers)
-EXPOSE 8069 8072
+EXPOSE 8066 8065
 ADD bin /app/bin/
