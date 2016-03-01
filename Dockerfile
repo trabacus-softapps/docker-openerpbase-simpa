@@ -2,7 +2,7 @@
 #Inspiration 2: https://github.com/justnidleguy/
 #Inspiration 3: https://bitbucket.org/xcgd/ubuntu4b
 
-FROM ubuntu:14.04.4
+FROM softapps/docker-ubuntubase
 MAINTAINER Arun T K <arun.kalikeri@xxxxxxxx.com>
 
 # generate locales
